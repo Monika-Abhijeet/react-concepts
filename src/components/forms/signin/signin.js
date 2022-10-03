@@ -1,48 +1,55 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-function SignIn() {
-  function handleSubmit(values) {
-    console.log(values);
-  }
 
-  function handleValidate(values) {
+function SignIn() {
+  let handleSubmit = (values) => {
+    console.log(values);
+  };
+  let handleValidation = (values) => {
     const errors = {};
     if (!values.email) {
-      errors.email = "Email cannot be empty";
+      errors.email = " Email cannot be empty";
     }
-    if (!values.password) {
-      errors.password = "Password cannot be empty";
-    } else if (values.password.length < 8) {
-      errors.password = "password should be min 8 chars";
-    }
-    console.log(errors);
+    // if (!values.password) {
+    //   errors.password = "Password cannot be empty";
+    // } else if (values.password.length < 8) {
+    //   errors.password = "Password should have minimum 8 characters";
+    // }
     return errors;
-  }
+  };
+
+  let validatePassword = (value) => {
+    if (!value) {
+      return "password cant be empty";
+    } else if (value.length < 8) {
+      return "Password should have minimum 8 characters";
+    }
+    return undefined;
+  };
+
   return (
     <div>
-      <h1>signin</h1>
+      <h1>Sign In</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-        validate={(e) => {
-          handleValidate(e);
-        }}
+        onSubmit={(e) => handleSubmit(e)}
+        validate={(e) => handleValidation(e)}
       >
         {(props) => (
           <Form>
             <div>
               <label>Email</label>
               <Field type="email" name="email" />
-              <ErrorMessage name="email">
-                {(error) => <p>{error}</p>}
-              </ErrorMessage>
+              <ErrorMessage name="email" />
             </div>
             <div>
               <label>Password</label>
-              <Field type="password" name="password" />
+              <Field
+                type="password"
+                name="password"
+                validate={(e) => validatePassword(e)}
+              />
               <ErrorMessage name="password">
-                {(error) => <p>{error}</p>}
+                {(error) => <p style={{ color: "red" }}>{error}</p>}
               </ErrorMessage>
             </div>
             <button type="submit">Login</button>
@@ -52,5 +59,4 @@ function SignIn() {
     </div>
   );
 }
-
 export default SignIn;
