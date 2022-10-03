@@ -1,8 +1,17 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 
 function SignIn() {
+  let dispatch = useDispatch();
   let handleSubmit = (values) => {
-    console.log(values);
+    let emailId = "monika@gmail.com";
+    let pwd = "monika1234";
+
+    if (values.email === emailId && values.password === pwd) {
+      dispatch({ type: "SIGNIN" });
+    } else {
+      dispatch({ type: "SIGNOUT" });
+    }
   };
   let handleValidation = (values) => {
     const errors = {};
