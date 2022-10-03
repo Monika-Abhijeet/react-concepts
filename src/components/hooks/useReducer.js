@@ -12,8 +12,6 @@ function UseReducerTutorial() {
         };
       case "DECREMENT":
         if (state.count <= 0) {
-          console.log(state.count);
-
           return {
             count: 0,
           };
