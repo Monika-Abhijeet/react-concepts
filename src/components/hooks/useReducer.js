@@ -11,9 +11,17 @@ function UseReducerTutorial() {
           showText: !state.showText,
         };
       case "DECREMENT":
+        if (state.count <= 0) {
+          console.log(state.count);
+
+          return {
+            count: 0,
+          };
+        }
         return {
           count: state.count - 1,
         };
+
       default:
         return state;
     }
