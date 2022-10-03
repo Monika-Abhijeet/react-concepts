@@ -1,6 +1,6 @@
 import { useState } from "react";
 function UseStateTutorial() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(100);
 
   function increment() {
     setCount(count + 1);
