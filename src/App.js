@@ -3,6 +3,7 @@ import Hook from "./components/hooks/Hooks";
 import Header from "./components/header/header";
 import Counter from "./components/header/counter/counter";
 import SignIn from "./components/forms/signin/signin";
+import SignUp from "./components/forms/signin/signup/signup";
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Hook />}></Route>
           <Route path="/counter" element={<Counter />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
