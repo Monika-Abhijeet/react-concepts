@@ -6,6 +6,7 @@ import SignIn from "./components/forms/signin/signin";
 import SignUp from "./components/forms/signin/signup/signup";
 import ParentHOC from "./components/hoc/parentHOC";
 import ReduxDemo from "./components/redux/reduxDemo";
+import ReactTest from "./components/testing/ReactTest";
 function App() {
   return (
     <div className="App">
@@ -14,7 +15,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<SignUp />}></Route>
-
+          <Route path="/test" element={<ReactTest />}></Route>
           <Route path="/hooks" element={<Hook />}></Route>
           <Route path="/counter" element={<Counter />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
